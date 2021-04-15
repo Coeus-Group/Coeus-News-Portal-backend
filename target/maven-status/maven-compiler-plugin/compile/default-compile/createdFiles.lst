@@ -1,5 +1,3 @@
 com/coeusnews/Response.class
-com/coeusnews/ApiGatewayResponse$Builder.class
-com/coeusnews/ApiGatewayResponse.class
 com/coeusnews/model/Article.class
 com/coeusnews/Handler.class

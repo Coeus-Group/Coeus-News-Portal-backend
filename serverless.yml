@@ -15,5 +15,5 @@ functions:
     handler: com.coeusnews.Handler
     events:
       - http:
-          path: /{category}
+          path: /{category}/coeusnews
           method: get
