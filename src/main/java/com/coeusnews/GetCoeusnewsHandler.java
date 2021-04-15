@@ -13,15 +13,19 @@ import org.apache.logging.log4j.Logger;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class GetCoeusnewsHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-	private static final Logger LOG = LogManager.getLogger(Handler.class);
+	private static final Logger LOG = LogManager.getLogger(GetCoeusnewsHandler.class);
 
 	@Override
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 		LOG.info("received: {}");
 
 		String category = request.getPathParameters().get("category");
+
+		String requestMethod = request.getHttpMethod();
+
+
 
 		List<Article> articles = new ArrayList<>();
 

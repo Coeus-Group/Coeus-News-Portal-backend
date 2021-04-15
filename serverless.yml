@@ -11,8 +11,8 @@ package:
   artifact: target/coeusnews-api-dev.jar
 
 functions:
-  coeusnews-api:
-    handler: com.coeusnews.Handler
+  get-coeusnews-api:
+    handler: com.coeusnews.GetCoeusnewsHandler
     events:
       - http:
           path: /{category}/coeusnews
