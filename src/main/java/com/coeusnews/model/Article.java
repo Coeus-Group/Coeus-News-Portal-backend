@@ -16,6 +16,8 @@ public class Article {
     private String article_location;
     private String article_approved_by;
 
+    public Article() {}
+
     public Article(int article_id, int author_name, String title, String category, String description, String article_text, String article_image_URL, String article_URL, String updated_at, String published_at, String article_status, String article_location, String article_approved_by) {
         this.article_id = article_id;
         this.author_name = author_name;

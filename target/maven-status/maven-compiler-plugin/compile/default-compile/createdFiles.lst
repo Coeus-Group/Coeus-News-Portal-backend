@@ -1,3 +1,4 @@
 com/coeusnews/Response.class
+com/coeusnews/SaveCoeusnewsHandler.class
 com/coeusnews/model/Article.class
 com/coeusnews/GetCoeusnewsHandler.class

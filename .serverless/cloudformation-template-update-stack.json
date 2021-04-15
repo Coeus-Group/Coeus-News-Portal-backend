@@ -77,6 +77,12 @@
         "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-get-coeusnews-api"
       }
     },
+    "SaveDashcoeusnewsDashapiLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-save-coeusnews-api"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -161,7 +167,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1618528234239-2021-04-15T23:10:34.239Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1618529742858-2021-04-15T23:35:42.858Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.GetCoeusnewsHandler",
         "Runtime": "java8",
@@ -179,14 +185,49 @@
         "GetDashcoeusnewsDashapiLogGroup"
       ]
     },
-    "GetDashcoeusnewsDashapiLambdaVersionGotUdYs0FezJtjCv17VqJn7Z0GSjOBit7jjFKWFOsXc": {
+    "SaveDashcoeusnewsDashapiLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1618529742858-2021-04-15T23:35:42.858Z/coeusnews-api-dev.jar"
+        },
+        "Handler": "com.coeusnews.SaveCoeusnewsHandler",
+        "Runtime": "java8",
+        "FunctionName": "coeus-news-portal-backend-dev-save-coeusnews-api",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "SaveDashcoeusnewsDashapiLogGroup"
+      ]
+    },
+    "GetDashcoeusnewsDashapiLambdaVersion0Ps4dRFapGks7XJNle68sbTzd5iWZWaipP3rKA0a8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "iCdNXTT3qdift4+eSl5QWX4hQ4UVH9yyNKk0Nhmu8No="
+        "CodeSha256": "YgCtP34UggvirvxkU8VedJkr8bYSMxCYswqvu769FPM="
+      }
+    },
+    "SaveDashcoeusnewsDashapiLambdaVersionv2diyftc5N6ND5RG0n2dZ0NLI981vorRQBQE6GRCUI": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "SaveDashcoeusnewsDashapiLambdaFunction"
+        },
+        "CodeSha256": "YgCtP34UggvirvxkU8VedJkr8bYSMxCYswqvu769FPM="
       }
     },
     "ApiGatewayRestApi": {
@@ -271,7 +312,50 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1618528232860": {
+    "ApiGatewayMethodCategoryVarCoeusnewsPost": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceCategoryVarCoeusnews"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "SaveDashcoeusnewsDashapiLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayDeployment1618529741486": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -280,7 +364,8 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodCategoryVarCoeusnewsGet"
+        "ApiGatewayMethodCategoryVarCoeusnewsGet",
+        "ApiGatewayMethodCategoryVarCoeusnewsPost"
       ]
     },
     "GetDashcoeusnewsDashapiLambdaPermissionApiGateway": {
@@ -289,6 +374,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "GetDashcoeusnewsDashapiLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "SaveDashcoeusnewsDashapiLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "SaveDashcoeusnewsDashapiLambdaFunction",
             "Arn"
           ]
         },
@@ -330,7 +452,13 @@
     "GetDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashcoeusnewsDashapiLambdaVersionGotUdYs0FezJtjCv17VqJn7Z0GSjOBit7jjFKWFOsXc"
+        "Ref": "GetDashcoeusnewsDashapiLambdaVersion0Ps4dRFapGks7XJNle68sbTzd5iWZWaipP3rKA0a8"
+      }
+    },
+    "SaveDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "SaveDashcoeusnewsDashapiLambdaVersionv2diyftc5N6ND5RG0n2dZ0NLI981vorRQBQE6GRCUI"
       }
     },
     "ServiceEndpoint": {
