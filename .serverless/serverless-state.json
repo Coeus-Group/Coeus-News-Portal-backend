@@ -176,7 +176,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z/coeusnews-api-dev.jar"
+                "S3Key": "serverless/coeus-news-portal-backend/dev/1618525490574-2021-04-15T22:24:50.574Z/coeusnews-api-dev.jar"
               },
               "Handler": "com.coeusnews.Handler",
               "Runtime": "java8",
@@ -216,7 +216,7 @@
               "Policy": ""
             }
           },
-          "ApiGatewayResourceCoeusnews": {
+          "ApiGatewayResourceCategoryVar": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -225,19 +225,19 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "coeusnews",
+              "PathPart": "{category}",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayMethodCoeusnewsGet": {
+          "ApiGatewayMethodCategoryVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceCoeusnews"
+                "Ref": "ApiGatewayResourceCategoryVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -274,7 +274,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1618525052334": {
+          "ApiGatewayDeployment1618525489111": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -283,7 +283,7 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodCoeusnewsGet"
+              "ApiGatewayMethodCategoryVarGet"
             ]
           },
           "CoeusnewsDashapiLambdaPermissionApiGateway": {
@@ -452,7 +452,7 @@
         "events": [
           {
             "http": {
-              "path": "coeusnews",
+              "path": "{category}",
               "method": "get",
               "integration": "AWS_PROXY"
             }
@@ -480,7 +480,7 @@
       },
       "package": {
         "artifact": "target/coeusnews-api-dev.jar",
-        "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z"
+        "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525490574-2021-04-15T22:24:50.574Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -489,7 +489,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z",
+    "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525490574-2021-04-15T22:24:50.574Z",
     "artifact": "coeusnews-api-dev.jar"
   }
 }
