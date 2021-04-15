@@ -1,4 +1,4 @@
-package com.serverless;
+package com.coeusnews;
 
 import java.util.Map;
 

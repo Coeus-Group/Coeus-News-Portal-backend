@@ -1,4 +1,5 @@
-com/serverless/Handler.class
-com/serverless/Response.class
-com/serverless/ApiGatewayResponse.class
-com/serverless/ApiGatewayResponse$Builder.class
+com/coeusnews/Response.class
+com/coeusnews/ApiGatewayResponse$Builder.class
+com/coeusnews/ApiGatewayResponse.class
+com/coeusnews/model/Article.class
+com/coeusnews/Handler.class

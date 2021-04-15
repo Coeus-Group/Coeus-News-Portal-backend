@@ -176,9 +176,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/coeus-news-portal-backend/dev/1618497044535-2021-04-15T14:30:44.535Z/hello-dev.jar"
+                "S3Key": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z/coeusnews-api-dev.jar"
               },
-              "Handler": "com.serverless.Handler",
+              "Handler": "com.coeusnews.Handler",
               "Runtime": "java8",
               "FunctionName": "coeus-news-portal-backend-dev-coeusnews-api",
               "MemorySize": 1024,
@@ -194,14 +194,14 @@
               "CoeusnewsDashapiLogGroup"
             ]
           },
-          "CoeusnewsDashapiLambdaVersionAXIQHuFXHlLK9eUOG6TDbaM5eB9X4bGpUpxmTmFEg4o": {
+          "CoeusnewsDashapiLambdaVersionaVZXsCwfQMyXmZkkaCqRHESSfkHs6SBPV6QhX0E": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CoeusnewsDashapiLambdaFunction"
               },
-              "CodeSha256": "nKhQWnUIs20pzWPMP7EJhFDliTxYuiBscTHEA5hVfo8="
+              "CodeSha256": "ktRvarbSyRHrwp04pWA8jJmZbP31iGjKCuDDITmiN4M="
             }
           },
           "ApiGatewayRestApi": {
@@ -274,7 +274,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1618497043149": {
+          "ApiGatewayDeployment1618525052334": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -333,7 +333,7 @@
           "CoeusnewsDashapiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CoeusnewsDashapiLambdaVersionAXIQHuFXHlLK9eUOG6TDbaM5eB9X4bGpUpxmTmFEg4o"
+              "Ref": "CoeusnewsDashapiLambdaVersionaVZXsCwfQMyXmZkkaCqRHESSfkHs6SBPV6QhX0E"
             }
           },
           "ServiceEndpoint": {
@@ -448,7 +448,7 @@
     "pluginsData": {},
     "functions": {
       "coeusnews-api": {
-        "handler": "com.serverless.Handler",
+        "handler": "com.coeusnews.Handler",
         "events": [
           {
             "http": {
@@ -464,7 +464,7 @@
         "timeout": 6,
         "runtime": "java8",
         "vpc": {},
-        "versionLogicalId": "CoeusnewsDashapiLambdaVersionAXIQHuFXHlLK9eUOG6TDbaM5eB9X4bGpUpxmTmFEg4o"
+        "versionLogicalId": "CoeusnewsDashapiLambdaVersionaVZXsCwfQMyXmZkkaCqRHESSfkHs6SBPV6QhX0E"
       }
     },
     "configValidationMode": "warn",
@@ -479,8 +479,8 @@
         "$ref": "$[\"service\"][\"provider\"]"
       },
       "package": {
-        "artifact": "target/hello-dev.jar",
-        "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618497044535-2021-04-15T14:30:44.535Z"
+        "artifact": "target/coeusnews-api-dev.jar",
+        "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -489,7 +489,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618497044535-2021-04-15T14:30:44.535Z",
-    "artifact": "hello-dev.jar"
+    "artifactDirectoryName": "serverless/coeus-news-portal-backend/dev/1618525053848-2021-04-15T22:17:33.848Z",
+    "artifact": "coeusnews-api-dev.jar"
   }
 }
