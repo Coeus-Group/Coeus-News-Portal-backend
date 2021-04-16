@@ -24,13 +24,13 @@ public class GetCoeusnewsHandler implements RequestHandler<APIGatewayProxyReques
 
 	@Override
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-		LOG.info("received: {}");
+		LOG.info("GetCoeusnewsHandler - Started");
 
 		String category = request.getPathParameters().get("category");
 			List<Article> articles = new ArrayList<>();
 
 		try{
-			Class.forName("com.mysql.jdbc.driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(
 					String.format("jdbc:mysql://%s/%s?user=%s&password=%s", "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
 					"coeusnews",
@@ -52,7 +52,7 @@ public class GetCoeusnewsHandler implements RequestHandler<APIGatewayProxyReques
 													rs.getString("article_URL"),
 													rs.getString("updated_at"),
 													rs.getString("published_at"),
-													rs.getString("status"),
+													rs.getString("article_status"),
 													rs.getString("article_location"),
 													rs.getString("article_approved_by"));
 
