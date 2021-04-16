@@ -19,7 +19,7 @@ public class SaveCoeusnewsHandler implements RequestHandler<APIGatewayProxyReque
 
 	@Override
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-		LOG.info("received: {}");
+		LOG.info("received the request");
 
 		String category = request.getPathParameters().get("category");
 		String requestBody = request.getBody();
