@@ -33,9 +33,9 @@ public class GetCoeusnewsHandler implements RequestHandler<APIGatewayProxyReques
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(
 					String.format("jdbc:mysql://%s/%s?user=%s&password=%s", "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
-					"coeusnews",
+					"dbname",
 					"root",
-					"abcd123abcd123"));
+					"pwd"));
 			prepStatement = conn.prepareStatement("SELECT * FROM article_post WHERE category = ?");
 			prepStatement.setString(1, category);
 			rs = prepStatement.executeQuery();
