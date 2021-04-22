@@ -7,19 +7,41 @@ provider:
   lambdaHashingVersion: 20201221
   profile: serverless
   region: eu-west-2
+  environment:
+    DB_HOST: ${file(./config.dev.json):DB_HOST}
+    DB_NAME: ${file(./config.dev.json):DB_NAME}
+    DB_USER: ${file(./config.dev.json):DB_USER}
+    DB_PASSWORD: ${file(./config.dev.json):DB_PASSWORD}
+
 package:
   artifact: target/coeusnews-api-dev.jar
 
 functions:
-  get-coeusnews-api:
-    handler: com.coeusnews.GetCoeusnewsHandler
+  getarticles-coeusnews-api:
+    handler: com.coeusnews.GetArticlesCoeusnewsHandler
     events:
       - http:
-          path: /{category}/coeusnews
+          path: /getArticles
           method: get
+          cors: true
+  getcategory-coeusnews-api:
+    handler: com.coeusnews.GetCategoryCoeusnewsHandler
+    events:
+      - http:
+          path: /getCategories/{category}
+          method: get
+          cors: true
+  getlocation-coeusnews-api:
+    handler: com.coeusnews.GetLocationCoeusnewsHandler
+    events:
+      - http:
+          path: /getLocations/{location}
+          method: get
+          cors: true
   save-coeusnews-api:
     handler: com.coeusnews.SaveCoeusnewsHandler
     events:
       - http:
           path: /{category}/coeusnews
           method: post
+          cors: true
