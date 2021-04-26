@@ -36,10 +36,11 @@ public class GetLocationCoeusnewsHandler implements RequestHandler<APIGatewayPro
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(
-					String.format("jdbc:mysql://%s/%s?user=%s&password=%s", "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
-					"coeusnews",
-					"root",
-					"admin123"));
+					String.format("jdbc:mysql://%s/%s?user=%s&password=%s",
+							System.getenv("DB_HOST"),
+							System.getenv("DB_NAME"),
+							System.getenv("DB_USER"),
+							System.getenv("DB_PASSWORD")));
 			prepStatement = conn.prepareStatement("SELECT * FROM article_post WHERE lower(article_location) = lower(?)");
 			prepStatement.setString(1, location);
 			rs = prepStatement.executeQuery();
