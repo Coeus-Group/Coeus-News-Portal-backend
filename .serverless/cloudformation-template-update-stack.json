@@ -71,10 +71,22 @@
         }
       }
     },
-    "GetDashcoeusnewsDashapiLogGroup": {
+    "GetarticlesDashcoeusnewsDashapiLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-get-coeusnews-api"
+        "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-getarticles-coeusnews-api"
+      }
+    },
+    "GetcategoryDashcoeusnewsDashapiLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-getcategory-coeusnews-api"
+      }
+    },
+    "GetlocationDashcoeusnewsDashapiLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/coeus-news-portal-backend-dev-getlocation-coeusnews-api"
       }
     },
     "SaveDashcoeusnewsDashapiLogGroup": {
@@ -160,20 +172,28 @@
         }
       }
     },
-    "GetDashcoeusnewsDashapiLambdaFunction": {
+    "GetarticlesDashcoeusnewsDashapiLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1618529742858-2021-04-15T23:35:42.858Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
         },
-        "Handler": "com.coeusnews.GetCoeusnewsHandler",
+        "Handler": "com.coeusnews.GetArticlesCoeusnewsHandler",
         "Runtime": "java8",
-        "FunctionName": "coeus-news-portal-backend-dev-get-coeusnews-api",
+        "FunctionName": "coeus-news-portal-backend-dev-getarticles-coeusnews-api",
         "MemorySize": 1024,
         "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DB_HOST": "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
+            "DB_NAME": "coeusnews",
+            "DB_USER": "root",
+            "DB_PASSWORD": "admin123"
+          }
+        },
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -182,7 +202,73 @@
         }
       },
       "DependsOn": [
-        "GetDashcoeusnewsDashapiLogGroup"
+        "GetarticlesDashcoeusnewsDashapiLogGroup"
+      ]
+    },
+    "GetcategoryDashcoeusnewsDashapiLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+        },
+        "Handler": "com.coeusnews.GetCategoryCoeusnewsHandler",
+        "Runtime": "java8",
+        "FunctionName": "coeus-news-portal-backend-dev-getcategory-coeusnews-api",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DB_HOST": "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
+            "DB_NAME": "coeusnews",
+            "DB_USER": "root",
+            "DB_PASSWORD": "admin123"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "GetcategoryDashcoeusnewsDashapiLogGroup"
+      ]
+    },
+    "GetlocationDashcoeusnewsDashapiLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+        },
+        "Handler": "com.coeusnews.GetLocationCoeusnewsHandler",
+        "Runtime": "java8",
+        "FunctionName": "coeus-news-portal-backend-dev-getlocation-coeusnews-api",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DB_HOST": "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
+            "DB_NAME": "coeusnews",
+            "DB_USER": "root",
+            "DB_PASSWORD": "admin123"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "GetlocationDashcoeusnewsDashapiLogGroup"
       ]
     },
     "SaveDashcoeusnewsDashapiLambdaFunction": {
@@ -192,13 +278,21 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1618529742858-2021-04-15T23:35:42.858Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.SaveCoeusnewsHandler",
         "Runtime": "java8",
         "FunctionName": "coeus-news-portal-backend-dev-save-coeusnews-api",
         "MemorySize": 1024,
         "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DB_HOST": "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
+            "DB_NAME": "coeusnews",
+            "DB_USER": "root",
+            "DB_PASSWORD": "admin123"
+          }
+        },
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -210,24 +304,44 @@
         "SaveDashcoeusnewsDashapiLogGroup"
       ]
     },
-    "GetDashcoeusnewsDashapiLambdaVersion0Ps4dRFapGks7XJNle68sbTzd5iWZWaipP3rKA0a8": {
+    "GetarticlesDashcoeusnewsDashapiLambdaVersion09T42DvzdOZBFcqzrkRIPnCcVMSTI9iMU9kt4QgNSs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "GetDashcoeusnewsDashapiLambdaFunction"
+          "Ref": "GetarticlesDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "YgCtP34UggvirvxkU8VedJkr8bYSMxCYswqvu769FPM="
+        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
       }
     },
-    "SaveDashcoeusnewsDashapiLambdaVersionv2diyftc5N6ND5RG0n2dZ0NLI981vorRQBQE6GRCUI": {
+    "GetcategoryDashcoeusnewsDashapiLambdaVersionIKde04KNg7jorDpmyABVXacId959aeu08MZID7zW9M": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetcategoryDashcoeusnewsDashapiLambdaFunction"
+        },
+        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+      }
+    },
+    "GetlocationDashcoeusnewsDashapiLambdaVersionRbwMlyDkidx94ZlM7ZGJIROw04vz4aExeVsbRY2ZiBs": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetlocationDashcoeusnewsDashapiLambdaFunction"
+        },
+        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+      }
+    },
+    "SaveDashcoeusnewsDashapiLambdaVersione2kwRkv06Ad1HAe18sOFfX2LKj3FUpyYJaTqeCD3E": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SaveDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "YgCtP34UggvirvxkU8VedJkr8bYSMxCYswqvu769FPM="
+        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
       }
     },
     "ApiGatewayRestApi": {
@@ -242,7 +356,7 @@
         "Policy": ""
       }
     },
-    "ApiGatewayResourceCategoryVar": {
+    "ApiGatewayResourceGetarticles": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -251,17 +365,74 @@
             "RootResourceId"
           ]
         },
+        "PathPart": "getArticles",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceGetcategories": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "getCategories",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceGetcategoriesCategoryVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceGetcategories"
+        },
         "PathPart": "{category}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       }
     },
-    "ApiGatewayResourceCategoryVarCoeusnews": {
+    "ApiGatewayResourceGetlocations": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
-          "Ref": "ApiGatewayResourceCategoryVar"
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "getLocations",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceGetlocationsLocationVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceGetlocations"
+        },
+        "PathPart": "{location}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceCoeusnews": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
         },
         "PathPart": "coeusnews",
         "RestApiId": {
@@ -269,13 +440,205 @@
         }
       }
     },
-    "ApiGatewayMethodCategoryVarCoeusnewsGet": {
+    "ApiGatewayResourceCoeusnewsTitleVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceCoeusnews"
+        },
+        "PathPart": "{title}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodGetarticlesOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetarticles"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodGetcategoriesCategoryVarOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetcategoriesCategoryVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodGetlocationsLocationVarOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetlocationsLocationVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodCoeusnewsTitleVarOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceCoeusnewsTitleVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodGetarticlesGet": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceCategoryVarCoeusnews"
+          "Ref": "ApiGatewayResourceGetarticles"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -300,7 +663,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "GetDashcoeusnewsDashapiLambdaFunction",
+                    "GetarticlesDashcoeusnewsDashapiLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -312,13 +675,99 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodCategoryVarCoeusnewsPost": {
+    "ApiGatewayMethodGetcategoriesCategoryVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetcategoriesCategoryVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetcategoryDashcoeusnewsDashapiLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayMethodGetlocationsLocationVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetlocationsLocationVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetlocationDashcoeusnewsDashapiLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayMethodCoeusnewsTitleVarPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceCategoryVarCoeusnews"
+          "Ref": "ApiGatewayResourceCoeusnewsTitleVar"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -355,7 +804,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1618529741486": {
+    "ApiGatewayDeployment1619435858466": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -364,16 +813,96 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodCategoryVarCoeusnewsGet",
-        "ApiGatewayMethodCategoryVarCoeusnewsPost"
+        "ApiGatewayMethodGetarticlesOptions",
+        "ApiGatewayMethodGetcategoriesCategoryVarOptions",
+        "ApiGatewayMethodGetlocationsLocationVarOptions",
+        "ApiGatewayMethodCoeusnewsTitleVarOptions",
+        "ApiGatewayMethodGetarticlesGet",
+        "ApiGatewayMethodGetcategoriesCategoryVarGet",
+        "ApiGatewayMethodGetlocationsLocationVarGet",
+        "ApiGatewayMethodCoeusnewsTitleVarPost"
       ]
     },
-    "GetDashcoeusnewsDashapiLambdaPermissionApiGateway": {
+    "GetarticlesDashcoeusnewsDashapiLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "GetDashcoeusnewsDashapiLambdaFunction",
+            "GetarticlesDashcoeusnewsDashapiLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetcategoryDashcoeusnewsDashapiLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetcategoryDashcoeusnewsDashapiLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetlocationDashcoeusnewsDashapiLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetlocationDashcoeusnewsDashapiLambdaFunction",
             "Arn"
           ]
         },
@@ -449,16 +978,28 @@
         "Ref": "ServerlessDeploymentBucket"
       }
     },
-    "GetDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
+    "GetarticlesDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashcoeusnewsDashapiLambdaVersion0Ps4dRFapGks7XJNle68sbTzd5iWZWaipP3rKA0a8"
+        "Ref": "GetarticlesDashcoeusnewsDashapiLambdaVersion09T42DvzdOZBFcqzrkRIPnCcVMSTI9iMU9kt4QgNSs"
+      }
+    },
+    "GetcategoryDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetcategoryDashcoeusnewsDashapiLambdaVersionIKde04KNg7jorDpmyABVXacId959aeu08MZID7zW9M"
+      }
+    },
+    "GetlocationDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetlocationDashcoeusnewsDashapiLambdaVersionRbwMlyDkidx94ZlM7ZGJIROw04vz4aExeVsbRY2ZiBs"
       }
     },
     "SaveDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SaveDashcoeusnewsDashapiLambdaVersionv2diyftc5N6ND5RG0n2dZ0NLI981vorRQBQE6GRCUI"
+        "Ref": "SaveDashcoeusnewsDashapiLambdaVersione2kwRkv06Ad1HAe18sOFfX2LKj3FUpyYJaTqeCD3E"
       }
     },
     "ServiceEndpoint": {

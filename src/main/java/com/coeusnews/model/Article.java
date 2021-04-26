@@ -2,8 +2,8 @@ package com.coeusnews.model;
 
 public class Article {
 
-    private int article_id;
-    private int author_name;
+    private String id;
+    private String author_name;
     private String title;
     private String category;
     private String description;
@@ -18,8 +18,8 @@ public class Article {
 
     public Article() {}
 
-    public Article(int article_id, int author_name, String title, String category, String description, String article_text, String article_image_URL, String article_URL, String updated_at, String published_at, String article_status, String article_location, String article_approved_by) {
-        this.article_id = article_id;
+    public Article(String id, String author_name, String title, String category, String description, String article_text, String article_image_URL, String article_URL, String updated_at, String published_at, String article_status, String article_location, String article_approved_by) {
+        this.id = id;
         this.author_name = author_name;
         this.title = title;
         this.category = category;
@@ -34,19 +34,19 @@ public class Article {
         this.article_approved_by = article_approved_by;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public String getId() {
+        return id;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setId(String article_id) {
+        this.id = id;
     }
 
-    public int getAuthor_name() {
+    public String getAuthor_name() {
         return author_name;
     }
 
-    public void setAuthor_name(int author_name) {
+    public void setAuthor_name(String author_name) {
         this.author_name = author_name;
     }
 

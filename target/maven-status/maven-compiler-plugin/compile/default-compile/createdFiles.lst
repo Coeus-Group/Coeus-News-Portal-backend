@@ -1,4 +1,6 @@
 com/coeusnews/Response.class
-com/coeusnews/SaveCoeusnewsHandler.class
+com/coeusnews/GetCategoryCoeusnewsHandler.class
 com/coeusnews/model/Article.class
-com/coeusnews/GetCoeusnewsHandler.class
+com/coeusnews/GetLocationCoeusnewsHandler.class
+com/coeusnews/GetArticlesCoeusnewsHandler.class
+com/coeusnews/SaveCoeusnewsHandler.class
