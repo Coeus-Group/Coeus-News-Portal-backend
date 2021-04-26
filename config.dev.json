@@ -1,6 +1,0 @@
-{
-  "DB_HOST" : "coeusnews-db.cetrdyssmcsb.eu-west-2.rds.amazonaws.com",
-  "DB_NAME" : "coeusnews",
-  "DB_USER" : "root",
-  "DB_PASSWORD" : "admin123"
-}
