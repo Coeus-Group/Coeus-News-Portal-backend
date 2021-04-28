@@ -27,13 +27,14 @@ public class SaveCoeusnewsHandler implements RequestHandler<APIGatewayProxyReque
 		String title = request.getPathParameters().get("title");
 		String requestBody = request.getBody();
 
+		ObjectMapper objMapper = new ObjectMapper();
 		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
 		response.setStatusCode(200);
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Access-Control-Allow-Origin", "*");
 		response.setHeaders(headers);
 
-		ObjectMapper objMapper = new ObjectMapper();
+
 		try{
 			Article article = objMapper.readValue(requestBody, Article.class);
 			Class.forName("com.mysql.jdbc.Driver");

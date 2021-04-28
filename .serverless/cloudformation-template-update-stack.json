@@ -179,7 +179,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619517928288-2021-04-27T10:05:28.288Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.GetArticlesCoeusnewsHandler",
         "Runtime": "java8",
@@ -212,7 +212,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619517928288-2021-04-27T10:05:28.288Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.GetCategoryCoeusnewsHandler",
         "Runtime": "java8",
@@ -245,7 +245,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619517928288-2021-04-27T10:05:28.288Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.GetLocationCoeusnewsHandler",
         "Runtime": "java8",
@@ -278,7 +278,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coeus-news-portal-backend/dev/1619435860112-2021-04-26T11:17:40.112Z/coeusnews-api-dev.jar"
+          "S3Key": "serverless/coeus-news-portal-backend/dev/1619517928288-2021-04-27T10:05:28.288Z/coeusnews-api-dev.jar"
         },
         "Handler": "com.coeusnews.SaveCoeusnewsHandler",
         "Runtime": "java8",
@@ -304,44 +304,44 @@
         "SaveDashcoeusnewsDashapiLogGroup"
       ]
     },
-    "GetarticlesDashcoeusnewsDashapiLambdaVersion09T42DvzdOZBFcqzrkRIPnCcVMSTI9iMU9kt4QgNSs": {
+    "GetarticlesDashcoeusnewsDashapiLambdaVersion9RIMcSg4xMWEvAIkp0xmLkMsq1URJoXGRe89EtO7jOw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetarticlesDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+        "CodeSha256": "Dx7E6Q0xSSX8xP5zG+ACqFI7lJslgKzWUY+HWt+IL9U="
       }
     },
-    "GetcategoryDashcoeusnewsDashapiLambdaVersionIKde04KNg7jorDpmyABVXacId959aeu08MZID7zW9M": {
+    "GetcategoryDashcoeusnewsDashapiLambdaVersionAfhQdfOSY7Qcn2QiS1wsMVSvoYD5jUgANUmMkOrA28": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetcategoryDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+        "CodeSha256": "Dx7E6Q0xSSX8xP5zG+ACqFI7lJslgKzWUY+HWt+IL9U="
       }
     },
-    "GetlocationDashcoeusnewsDashapiLambdaVersionRbwMlyDkidx94ZlM7ZGJIROw04vz4aExeVsbRY2ZiBs": {
+    "GetlocationDashcoeusnewsDashapiLambdaVersion7w65IIfvZGQPMiil4dSMd2yJD7RKROEhLWrgnVjrQSY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetlocationDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+        "CodeSha256": "Dx7E6Q0xSSX8xP5zG+ACqFI7lJslgKzWUY+HWt+IL9U="
       }
     },
-    "SaveDashcoeusnewsDashapiLambdaVersione2kwRkv06Ad1HAe18sOFfX2LKj3FUpyYJaTqeCD3E": {
+    "SaveDashcoeusnewsDashapiLambdaVersioni7P6xkby5YqxPHYS3AQ7CbOocRA76Cj4vjoskhfhyk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SaveDashcoeusnewsDashapiLambdaFunction"
         },
-        "CodeSha256": "jAMFHAnG+znDvXLuI1u/+D4r522zpdKr66MSTES5PAo="
+        "CodeSha256": "Dx7E6Q0xSSX8xP5zG+ACqFI7lJslgKzWUY+HWt+IL9U="
       }
     },
     "ApiGatewayRestApi": {
@@ -447,6 +447,18 @@
           "Ref": "ApiGatewayResourceCoeusnews"
         },
         "PathPart": "{title}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceCoeusnewsTitleVarSavearticle": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceCoeusnewsTitleVar"
+        },
+        "PathPart": "saveArticle",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -587,7 +599,7 @@
         }
       }
     },
-    "ApiGatewayMethodCoeusnewsTitleVarOptions": {
+    "ApiGatewayMethodCoeusnewsTitleVarSavearticleOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "AuthorizationType": "NONE",
@@ -625,7 +637,7 @@
           ]
         },
         "ResourceId": {
-          "Ref": "ApiGatewayResourceCoeusnewsTitleVar"
+          "Ref": "ApiGatewayResourceCoeusnewsTitleVarSavearticle"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -761,13 +773,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodCoeusnewsTitleVarPost": {
+    "ApiGatewayMethodCoeusnewsTitleVarSavearticlePost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceCoeusnewsTitleVar"
+          "Ref": "ApiGatewayResourceCoeusnewsTitleVarSavearticle"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -804,7 +816,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1619435858466": {
+    "ApiGatewayDeployment1619517926617": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -816,11 +828,11 @@
         "ApiGatewayMethodGetarticlesOptions",
         "ApiGatewayMethodGetcategoriesCategoryVarOptions",
         "ApiGatewayMethodGetlocationsLocationVarOptions",
-        "ApiGatewayMethodCoeusnewsTitleVarOptions",
+        "ApiGatewayMethodCoeusnewsTitleVarSavearticleOptions",
         "ApiGatewayMethodGetarticlesGet",
         "ApiGatewayMethodGetcategoriesCategoryVarGet",
         "ApiGatewayMethodGetlocationsLocationVarGet",
-        "ApiGatewayMethodCoeusnewsTitleVarPost"
+        "ApiGatewayMethodCoeusnewsTitleVarSavearticlePost"
       ]
     },
     "GetarticlesDashcoeusnewsDashapiLambdaPermissionApiGateway": {
@@ -981,25 +993,25 @@
     "GetarticlesDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetarticlesDashcoeusnewsDashapiLambdaVersion09T42DvzdOZBFcqzrkRIPnCcVMSTI9iMU9kt4QgNSs"
+        "Ref": "GetarticlesDashcoeusnewsDashapiLambdaVersion9RIMcSg4xMWEvAIkp0xmLkMsq1URJoXGRe89EtO7jOw"
       }
     },
     "GetcategoryDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetcategoryDashcoeusnewsDashapiLambdaVersionIKde04KNg7jorDpmyABVXacId959aeu08MZID7zW9M"
+        "Ref": "GetcategoryDashcoeusnewsDashapiLambdaVersionAfhQdfOSY7Qcn2QiS1wsMVSvoYD5jUgANUmMkOrA28"
       }
     },
     "GetlocationDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetlocationDashcoeusnewsDashapiLambdaVersionRbwMlyDkidx94ZlM7ZGJIROw04vz4aExeVsbRY2ZiBs"
+        "Ref": "GetlocationDashcoeusnewsDashapiLambdaVersion7w65IIfvZGQPMiil4dSMd2yJD7RKROEhLWrgnVjrQSY"
       }
     },
     "SaveDashcoeusnewsDashapiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SaveDashcoeusnewsDashapiLambdaVersione2kwRkv06Ad1HAe18sOFfX2LKj3FUpyYJaTqeCD3E"
+        "Ref": "SaveDashcoeusnewsDashapiLambdaVersioni7P6xkby5YqxPHYS3AQ7CbOocRA76Cj4vjoskhfhyk"
       }
     },
     "ServiceEndpoint": {

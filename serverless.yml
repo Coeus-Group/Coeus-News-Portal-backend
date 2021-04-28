@@ -42,6 +42,6 @@ functions:
     handler: com.coeusnews.SaveCoeusnewsHandler
     events:
       - http:
-          path: /coeusnews/{title}
+          path: /coeusnews/{title}/saveArticle
           method: post
           cors: true
