@@ -1,6 +1,8 @@
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/Response.java
+/Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/model/ArticleCategory.java
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/GetLocationCoeusnewsHandler.java
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/model/Article.java
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/GetArticlesCoeusnewsHandler.java
+/Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/model/ArticleLocation.java
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/SaveCoeusnewsHandler.java
 /Users/srividya/TR/Coeus-News-Portal-backend/src/main/java/com/coeusnews/GetCategoryCoeusnewsHandler.java

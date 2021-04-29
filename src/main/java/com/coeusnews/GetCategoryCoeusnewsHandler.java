@@ -6,6 +6,7 @@ import java.util.*;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.coeusnews.model.Article;
+import com.coeusnews.model.ArticleCategory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,7 @@ public class GetCategoryCoeusnewsHandler implements RequestHandler<APIGatewayPro
 		LOG.info("GetCategoryCoeusnewsHandler - Started");
 
 		String category = request.getPathParameters().get("category");
-			List<Article> articles = new ArrayList<>();
+			List<ArticleCategory> articles = new ArrayList<>();
 
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -37,13 +38,13 @@ public class GetCategoryCoeusnewsHandler implements RequestHandler<APIGatewayPro
 							System.getenv("DB_NAME"),
 							System.getenv("DB_USER"),
 							System.getenv("DB_PASSWORD")));
-			prepStatement = conn.prepareStatement("SELECT * FROM article_post WHERE lower(category) = lower(?)");
+			prepStatement = conn.prepareStatement("SELECT * FROM article_category WHERE lower(category) = lower(?)");
 			prepStatement.setString(1, category);
 			rs = prepStatement.executeQuery();
 
 			while(rs.next())
 			{
-					Article article = new Article(	rs.getString("id"),
+					ArticleCategory article = new ArticleCategory(	rs.getString("id"),
 													rs.getString("author_name"),
 													rs.getString("title"),
 													rs.getString("category"),
@@ -55,7 +56,9 @@ public class GetCategoryCoeusnewsHandler implements RequestHandler<APIGatewayPro
 													rs.getString("published_at"),
 													rs.getString("article_status"),
 													rs.getString("article_location"),
-													rs.getString("article_approved_by"));
+													rs.getString("article_approved_by"),
+													rs.getString("source"),
+													rs.getInt("counter"));
 
 					articles.add(article);
 			}

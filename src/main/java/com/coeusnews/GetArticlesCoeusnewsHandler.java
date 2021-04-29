@@ -42,7 +42,7 @@ public class GetArticlesCoeusnewsHandler implements RequestHandler<APIGatewayPro
 							System.getenv("DB_NAME"),
 							System.getenv("DB_USER"),
 							System.getenv("DB_PASSWORD")));
-			prepStatement = conn.prepareStatement("SELECT * FROM article_post");
+			prepStatement = conn.prepareStatement("SELECT * FROM article_location WHERE trim(article_location) IS NOT NULL ORDER BY counter DESC");
 			//prepStatement.setString(1, category);
 			rs = prepStatement.executeQuery();
 
@@ -60,7 +60,8 @@ public class GetArticlesCoeusnewsHandler implements RequestHandler<APIGatewayPro
 													rs.getString("published_at"),
 													rs.getString("article_status"),
 													rs.getString("article_location"),
-													rs.getString("article_approved_by"));
+													rs.getString("article_approved_by"),
+													rs.getInt("counter"));
 
 					articles.add(article);
 			}

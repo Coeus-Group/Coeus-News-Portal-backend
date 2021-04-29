@@ -15,10 +15,11 @@ public class Article {
     private String article_status;
     private String article_location;
     private String article_approved_by;
+    private int counter;
 
     public Article() {}
 
-    public Article(String id, String author_name, String title, String category, String description, String article_text, String article_image_URL, String article_URL, String updated_at, String published_at, String article_status, String article_location, String article_approved_by) {
+    public Article(String id, String author_name, String title, String category, String description, String article_text, String article_image_URL, String article_URL, String updated_at, String published_at, String article_status, String article_location, String article_approved_by, int counter) {
         this.id = id;
         this.author_name = author_name;
         this.title = title;
@@ -32,6 +33,7 @@ public class Article {
         this.article_status = article_status;
         this.article_location = article_location;
         this.article_approved_by = article_approved_by;
+        this.counter = counter;
     }
 
     public String getId() {
@@ -137,4 +139,13 @@ public class Article {
     public void setArticle_approved_by(String article_approved_by) {
         this.article_approved_by = article_approved_by;
     }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
 }

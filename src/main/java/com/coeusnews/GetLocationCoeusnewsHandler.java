@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.coeusnews.model.Article;
+import com.coeusnews.model.ArticleLocation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +32,7 @@ public class GetLocationCoeusnewsHandler implements RequestHandler<APIGatewayPro
 		LOG.info("GetLocationCoeusnewsHandler - Started");
 
 		String location = request.getPathParameters().get("location");
-			List<Article> articles = new ArrayList<>();
+			List<ArticleLocation> articles = new ArrayList<>();
 
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -41,13 +42,13 @@ public class GetLocationCoeusnewsHandler implements RequestHandler<APIGatewayPro
 							System.getenv("DB_NAME"),
 							System.getenv("DB_USER"),
 							System.getenv("DB_PASSWORD")));
-			prepStatement = conn.prepareStatement("SELECT * FROM article_post WHERE lower(article_location) = lower(?)");
+			prepStatement = conn.prepareStatement("SELECT * FROM article_location WHERE lower(article_location) = lower(?)");
 			prepStatement.setString(1, location);
 			rs = prepStatement.executeQuery();
 
 			while(rs.next())
 			{
-					Article article = new Article(	rs.getString("id"),
+					ArticleLocation article = new ArticleLocation(rs.getString("id"),
 													rs.getString("author_name"),
 													rs.getString("title"),
 													rs.getString("category"),
@@ -59,7 +60,9 @@ public class GetLocationCoeusnewsHandler implements RequestHandler<APIGatewayPro
 													rs.getString("published_at"),
 													rs.getString("article_status"),
 													rs.getString("article_location"),
-													rs.getString("article_approved_by"));
+													rs.getString("article_approved_by"),
+													rs.getString("source"),
+													rs.getInt("counter"));
 
 					articles.add(article);
 			}
