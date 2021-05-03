@@ -37,6 +37,7 @@ Create a config.dev.json file at the project level containing the following name
  - "DB_NAME" : "<database_name>",
  - "DB_USER" : "<database_user>",
  - "DB_PASSWORD" : "<database_password>"
+ 
 } 
 
 Deployment
