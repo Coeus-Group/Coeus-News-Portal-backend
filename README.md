@@ -7,30 +7,35 @@ The hosted version of the application is available here: https://github.com/Coeu
 Technology
 This project used the following:
 
-Java 8
-Maven
-Serverless Framework
-Terraform
-AWS Lambda and API Gateway
-AWS RDS (MySQL 5.7)
+- Java 8
+- Maven
+- Serverless Framework
+- Terraform
+- AWS Lambda and API Gateway
+- AWS RDS (MySQL 5.7)
+
 Setup
 Download or clone this repo. The codebase uses Maven for dependency management and Serverless Framework for deploying to AWS Lambda.
 
 To build the application:
 
-mvn clean install 
+- mvn clean install 
+
 To deploy the Lambda functions to AWS:
 
-serverless deploy
+- serverless deploy
+
 Configuration
 AWS keys set up for your Serverless installation to be referenced from the project serverless.yml file.
+
 Create a config.dev.json file at the project level containing the following name/value pairs:
-{
-  "DB_HOST" : "<database_host_name>",
-  "DB_NAME" : "<database_name>",
-  "DB_USER" : "<database_user>",
-  "DB_PASSWORD" : "<database_password>"
-} 
+-{
+ - "DB_HOST" : "<database_host_name>",
+ - "DB_NAME" : "<database_name>",
+  - "DB_USER" : "<database_user>",
+  - "DB_PASSWORD" : "<database_password>"
+-} 
+
 Deployment
 To deploy the Lambda functions run:
 
@@ -48,7 +53,7 @@ method: get
 
 # GET
   getarticles-coeusnews-api:
-    handler: com.coeusnews.GetArticlesCoeusnewsHandler
+   handler: com.coeusnews.GetArticlesCoeusnewsHandler
     events:
       - http:
           path: /getArticles
