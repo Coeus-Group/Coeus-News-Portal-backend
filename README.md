@@ -54,16 +54,11 @@ Lambda HTTP Functions
 # GET Articles
   getarticles-coeusnews-api:
   
-   handler: com.coeusnews.GetArticlesCoeusnewsHandler
-   
-    events:
-    
-      - http:
-      
+   handler: com.coeusnews.GetArticlesCoeusnewsHandler   
+    events: 
+      - http:      
           path: /getArticles
-          
-          method: get
-          
+          method: get 
           cors: true
           
 
