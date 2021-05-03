@@ -55,10 +55,15 @@ Lambda HTTP Functions
   getarticles-coeusnews-api:
   
    handler: com.coeusnews.GetArticlesCoeusnewsHandler   
+   
     events: 
-      - http:      
+    
+      - http:     
+       
           path: /getArticles
+          
           method: get 
+          
           cors: true
           
 
@@ -111,16 +116,16 @@ Lambda HTTP Functions
               
 Display the version number of serverless framework:
 
-serverless version
+- serverless version
 
 Deploy from the current folder:
 
-serverless deploy 
+- serverless deploy 
 
 check log file for a function (e.g. function name getlocation-coeusnews-api):
 
-serverless logs -f getlocation-coeusnews-api
+- serverless logs -f getlocation-coeusnews-api
 
 Remove everything:
 
-serverless remove
+- serverless remove
